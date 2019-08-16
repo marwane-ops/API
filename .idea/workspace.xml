@@ -127,12 +127,8 @@
       <path value="$PROJECT_DIR$/vendor/composer" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="683" />
-    <option name="width" value="683" />
-    <option name="height" value="728" />
-  </component>
   <component name="ProjectId" id="1PVdSO0g0KlR4fcvqnTadE5S3JM" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -167,7 +163,7 @@
       <workItem from="1565680475040" duration="5948000" />
       <workItem from="1565786034298" duration="15021000" />
       <workItem from="1565962103546" duration="688000" />
-      <workItem from="1565963211947" duration="705000" />
+      <workItem from="1565963211947" duration="7673000" />
     </task>
     <servers />
   </component>

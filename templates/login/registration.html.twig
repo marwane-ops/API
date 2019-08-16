@@ -1,19 +1,28 @@
 {% extends 'base.html.twig' %}
 {%  block body %}
-    <h1>Inscription</h1>
+    <h1>Inscription sur le site</h1>
     {{ form_start(form) }}
 
-    {{ form_widget(form) }}
-    {{ form_row(form.Username, {'label':'Nom d\'utilisateur', 'attr':
-    {'placeholder': 'Nom d\'utilisateur....'}}) }}
-    {{ form_row(form.NameF, {'label':'Nom de famille', 'attr':
+    {{ form_row(form.Username, {'label':'Nom', 'attr':
+    {'placeholder': 'Name'}}) }}
+    {{ form_row(form.NameF, {'label':'Prénom', 'attr':
         {'placeholder': 'Nom de famille....'}}) }}
-    {{ form_row(form.Email, {'label':'address Mail', 'attr':
+    {{ form_row(form.Age, {'label':'Date de naissance', 'attr':
+        {'placeholder': 'YYYY/MM/JJ'}}) }}
+    {{ form_row(form.Pays, {'label':'Pays', 'attr':
+        {'placeholder': 'Country....'}}) }}
+    {{ form_row(form.City, {'label':'Ville', 'attr':
+        {'placeholder': 'City....'}}) }}
+    {{ form_row(form.Zip_Code, {'label':'Code postal', 'attr':
+        {'placeholder': 'Zip code'}}) }}
+    {{ form_row(form.Phone, {'label':'N° Telephone', 'attr':
+        {'placeholder': 'Phone Number'}}) }}
+    {{ form_row(form.Email, {'label':'Email', 'attr':
         {'placeholder': 'address Mail'}}) }}
     {{ form_row(form.Password, {'label':'Mot de passe', 'attr':
         {'placeholder': 'Mot de passe'}}) }}
-    {{ form_row(form.Confirm_Password, {'label':'Mot de passe', 'attr':
-        {'placeholder': 'Repétez Mot de passe'}}) }}
+    {{ form_row(form.Confirm_Password, {'label':'Confirmation du mot de passe', 'attr':
+        {'placeholder': 'Repeat password'}}) }}
     <button type="submit" >Valider inscription</button>
     {{ form_end(form) }}
 

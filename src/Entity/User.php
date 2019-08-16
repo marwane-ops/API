@@ -47,6 +47,31 @@ class User implements  UserInterface
      */
     private $Email;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $Pays;
+
+    /**
+     * @ORM\Column(type="decimal", precision=20, scale=20)
+     */
+    private $Age;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $City;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $Zip_Code;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $Phone;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -113,5 +138,65 @@ class User implements  UserInterface
     public function getRoles()
     {
         return['ROLE_USER'];
+    }
+
+    public function getPays(): ?string
+    {
+        return $this->Pays;
+    }
+
+    public function setPays(string $Pays): self
+    {
+        $this->Pays = $Pays;
+
+        return $this;
+    }
+
+    public function getAge()
+    {
+        return $this->Age;
+    }
+
+    public function setAge($Age): self
+    {
+        $this->Age = $Age;
+
+        return $this;
+    }
+
+    public function getCity(): ?string
+    {
+        return $this->City;
+    }
+
+    public function setCity(string $City): self
+    {
+        $this->City = $City;
+
+        return $this;
+    }
+
+    public function getZipCode(): ?string
+    {
+        return $this->Zip_Code;
+    }
+
+    public function setZipCode(string $Zip_Code): self
+    {
+        $this->Zip_Code = $Zip_Code;
+
+        return $this;
+    }
+
+    public function getPhone(): ?string
+    {
+        return $this->Phone;
+    }
+
+    public function setPhone(string $Phone): self
+    {
+        $this->Phone = $Phone;
+
+        return $this;
     }
 }
