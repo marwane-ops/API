@@ -6,9 +6,12 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ * @Vich\Uploadable
  * @UniqueEntity(
  *     fields= {"Email"},
  *     message= "L'email indiqué est déja utilisé")
@@ -53,7 +56,7 @@ class User implements  UserInterface
     private $Pays;
 
     /**
-     * @ORM\Column(type="decimal", precision=20, scale=20)
+     * @ORM\Column(type="string", length=255)
      */
     private $Age;
 
@@ -71,6 +74,25 @@ class User implements  UserInterface
      * @ORM\Column(type="string", length=255)
      */
     private $Phone;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $Street;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $Photo;
+
+
+    /**
+     * @Vich\UploadableField(mapping="photos", fileNameProperty="Photo")
+     * @var File
+     */
+    public $imageFile;
+
+
 
     public function getId(): ?int
     {
@@ -199,4 +221,30 @@ class User implements  UserInterface
 
         return $this;
     }
+
+    public function getStreet(): ?string
+    {
+        return $this->Street;
+    }
+
+    public function setStreet(string $Street): self
+    {
+        $this->Street = $Street;
+
+        return $this;
+    }
+
+    public function getPhoto()
+    {
+        return $this->Photo;
+    }
+
+    public function setPhoto($Photo): self
+    {
+        $this->Photo = $Photo;
+
+        return $this;
+    }
+
+
 }
