@@ -3,6 +3,7 @@ security:
         App\Entity\User:
             algorithm: bcrypt
 
+
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
         in_memory: { memory: ~ }
@@ -10,6 +11,7 @@ security:
             entity:
                 class: App\Entity\User
                 property: Email
+
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/

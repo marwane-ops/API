@@ -1,0 +1,9 @@
+{% block subject %}Confirmation d'inscription{% endblock %}
+
+    {% block body_text %}
+    {% autoescape false %}
+
+    Bonjour {{ user.Username }} !
+    Ceci mail confirmation: {{ confirmationUrl }}
+    {% endautoescape %}
+    {% endblock %}

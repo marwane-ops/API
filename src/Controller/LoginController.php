@@ -11,6 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Bundle\MonologBundle\SwiftMailer;
 
 class LoginController extends AbstractController
 {
@@ -34,6 +35,7 @@ class LoginController extends AbstractController
                 $hash = $encoder->encodePassword($user, $user->getPassword());
 
                 $user->setPassword($hash);
+
                 $manager->persist($user);
                 $manager->flush();
                 return $this->redirectToRoute('security_login');
@@ -41,6 +43,35 @@ class LoginController extends AbstractController
             return $this->render('login/registration.html.twig', [
                 'form' => $form->createView()
         ]);
+    }
+
+    /**
+     * @Route("/emails", name="confirm_email
+     */
+
+    public function EmailValidation( Request $request, \Swift_Mailer $mailer, TokenGeneratorInterface $tokenGenerator)
+    {
+        if ($request->isMethod('POST')) {
+
+            $token = $tokenGenerator->generateToken();
+
+
+            $url = $this->generateUrl('reset_password', ['token' => $token], UrlGeneratorInterface::ABSOLUTE_URL);
+
+            $message = (new \Swift_Message('Forgot Password'))
+                ->setFrom('no-reply.learnin_way@gmail.com')
+                ->setTo($user->getEmail())
+                ->setBody(
+                    "Click on the following link to reset your password: " . $url,
+                    'text/html'
+                );
+
+            $mailer->send($message);
+
+            $this->addFlash('notice', 'Mail send');
+
+            return $this->redirectToRoute('login');
+        }
     }
 
     /**
@@ -57,4 +88,5 @@ class LoginController extends AbstractController
     public function logout() {
 
     }
+
 }
